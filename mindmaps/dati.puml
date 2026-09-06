@@ -1,11 +1,10 @@
-```plantuml
 @startmindmap
 <style>
 mindmapDiagram {
     .root {
         BackgroundColor #333333
         FontColor #FFFFFF
-        RoundCorner 100
+        RoundCorner 150
         FontSize 28
         Padding 20
         LineThickness 5
@@ -16,18 +15,13 @@ mindmapDiagram {
     .rose * {
         BackgroundColor #FFBBCC
     }
+    .blue * {
+        BackgroundColor lightblue
+    }    
 }
 </style>
-* <b>Dati</b> <<root>>
-**  Tipologia
-*** Non relazionali
-**** Semi-strutturati
-***** Json-xml
-**** Non strutturati
-***** Video-audio
-***** Txt-pdf-pptx..
-*** [Relazionali]
-*** [Integrazione]
+*:AZ-305
+  Dati; <<root>>
 ** Az Storage-account <<rose>>
 *** Servizi
 **** [Blob]
@@ -105,16 +99,90 @@ mindmapDiagram {
 ****        [customer-managed keys]
 
 left side
+**  Tipologia
+*** Non relazionali -> NoSql
+**** Semi-strutturati
+***** Json-xml
+**** Non strutturati -> Az Storage Account
+***** Video-audio
+***** Txt-pdf-pptx..
+*** Relazionali -> Sql Server
+*** Integrazione
 
 ** sql <<green>>
-*** opzioni prezzo 
+*** modelli prezzo 
 **** DTU Model
 ***** combinata
 ******_ Core
 ******_ storage
+******_ I/O
 ***** legacy
+***** semplice
 **** VCore
-**** server less
+***** provisioned
+******_ scelta vCore/RAM/Tipo storage/service tier
+***** serverless
+******_ dinamico/a consumo
+******_ solo per Gen Purpose (service tier)
+******_ x carico sporadico/intermittente
+*** Servizi
+**** sqlServer VM
+***** x Max compatibilità
+***** IAAS Agent Extension
+**** Mng instance
+***** single
+****** x compatibilità
+*******_ sql agent
+*******_ CLR
+*******_ trans distribuite
+****** max 
+*******_ 500 DB
+*******_ 32 Tb
+***** pool
+******_ x tanti piccoli db
+**** AZ Db
+***** single
+****** offerta gratuita fino a 10Gb
+****** Max
+*******_ 100 Tb
+*******_ 100.000 sec VCore
+****** modello prezzo
+******* DTU -> service tier
+******** basic -> 5 DTU
+******** standard -> 100 DTU
+******** premium -> 1000 DTU
+******* Vcore -> service tier
+******** Gen Purpose
+******** Business Critical
+******** Hyperscale
+***** elastic pool
+****** x molti db piccoli/indipendenti
+******* paghi solo 1 (il pool)
+******* scalabilità verticale
+****** modelli prezzo
+******* DTU model -> service tier
+******** standard
+******** premium
+******* Vcore -> service tier
+******** Gen Purpose
+*** Sicurezza
+**** rest
+*****:TDE
+ Transperent
+ Data
+ Encryption;
+**** transit
+***** TLS 1.2
+**** use
+***** Dynamic Data Masking
 
+** NoSql <<blue>>
+*** cosmosDB
+*** caratteristiche
+**** Bassa Latenza
+**** Replica Globale
+***** Dati + Nodi
+***** Scala orizzontalmente
+
+** Az Data factory ADF
 @endmindmap
-```
