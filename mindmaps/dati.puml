@@ -1,10 +1,11 @@
+```plantuml
 @startmindmap
 <style>
 mindmapDiagram {
     .root {
         BackgroundColor #333333
         FontColor #FFFFFF
-        RoundCorner 110
+        RoundCorner 100
         FontSize 28
         Padding 20
         LineThickness 5
