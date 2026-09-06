@@ -1,0 +1,118 @@
+@startmindmap
+<style>
+mindmapDiagram {
+    .root {
+        BackgroundColor #333333
+        FontColor #FFFFFF
+        RoundCorner 110
+        FontSize 28
+        Padding 20
+        LineThickness 5
+    }
+    .green * {
+        BackgroundColor lightgreen
+    }
+    .rose * {
+        BackgroundColor #FFBBCC
+    }
+}
+</style>
+* <b>Dati</b> <<root>>
+**  Tipologia
+*** Non relazionali
+**** Semi-strutturati
+***** Json-xml
+**** Non strutturati
+***** Video-audio
+***** Txt-pdf-pptx..
+*** [Relazionali]
+*** [Integrazione]
+** Az Storage-account <<rose>>
+*** Servizi
+**** [Blob]
+*****        {{Tipo}}
+******          Standard v2
+******          Premium-BlockBlobStorage
+*****        {{Livelli accesso}}
+******          Hot-Frequente
+******          Cool-sporadico
+*******            Min 30gg
+******          Cold-freddo
+*******            Min 90gg
+******          Archive-archivio
+*******            Min 180gg
+******          WORM
+*******            Sola lettura 
+*******            Blocchi
+********            Temporali 
+********            Giudiziari
+*****        {{Considerazioni}} 
+******          Posizione-Region 
+******          Conformità 
+******          Costi 
+******          Replica
+*******            Separare critici 
+********              Replica area secondaria 
+*******            Area primaria 
+********              Lrs
+********              Zrs
+*******            Area secondaria 
+********              Grs
+********              Gzrs
+******          Carico amm.tivo
+******          Riservatezza
+******          Isolamento
+****      [File]
+*****        {{Metodo accesso}} 
+******          Diretto-SMB
+******          Sincronizzazione locale-cache
+*****        {{Prestazioni}} 
+******          Standard-hdd
+******          Premium-sdd
+*******            Lrs-zrs only
+******          Netapp-altissime Prestazioni
+****      [Dischi]
+*****        {{Tipologie}}
+******            Ultra-sql
+******            Premium v2
+******            Premium 
+******            Standard-app
+******            Hdd Standard-backup
+*****        {{Crittografia}}
+******            Livello 
+*******              Disco-ADE Az disk encription
+********                CPU vm-bitlocker
+********                Key in az keyvault
+********                No Dati temp e cache
+********                Ritiro 2028 -> host encr.
+********                X legacy
+*******              server SSE
+********                default-az storage
+********                Dischi gestiti
+********                No Dati temp e cache
+*******              host
+********                Dischi gestiti
+********                * Dati temporanei e cache
+********                X Dati sensibili/regolamenti 
+***    (Sicurezza)
+****        [Baseline]
+***** {{Framework riferimento}}
+****        [SAS]
+****        [Firewall rules]
+****        [Private endpoint]
+****        ['Secure transfer required=true']
+****        [customer-managed keys]
+
+left side
+
+** sql <<green>>
+*** opzioni prezzo 
+**** DTU Model
+***** combinata
+******_ Core
+******_ storage
+***** legacy
+**** VCore
+**** server less
+
+@endmindmap
