@@ -4,7 +4,7 @@ mindmapDiagram {
     .root {
         BackgroundColor #333333
         FontColor #FFFFFF
-        RoundCorner 150
+        RoundCorner 2000
         FontSize 28
         Padding 20
         LineThickness 5
@@ -20,169 +20,231 @@ mindmapDiagram {
     }    
 }
 </style>
-*:AZ-305
-  Dati; <<root>>
-** Az Storage-account <<rose>>
-*** Servizi
-**** [Blob]
-*****        {{Tipo}}
-******          Standard v2
-******          Premium-BlockBlobStorage
-*****        {{Livelli accesso}}
-******          Hot-Frequente
-******          Cool-sporadico
-*******            Min 30gg
-******          Cold-freddo
-*******            Min 90gg
-******          Archive-archivio
-*******            Min 180gg
-******          WORM
-*******            Sola lettura 
-*******            Blocchi
-********            Temporali 
-********            Giudiziari
-*****        {{Considerazioni}} 
-******          Posizione-Region 
-******          Conformità 
-******          Costi 
-******          Replica
-*******            Separare critici 
-********              Replica area secondaria 
-*******            Area primaria 
-********              Lrs
-********              Zrs
-*******            Area secondaria 
-********              Grs
-********              Gzrs
-******          Carico amm.tivo
-******          Riservatezza
-******          Isolamento
-****      [File]
-*****        {{Metodo accesso}} 
-******          Diretto-SMB
-******          Sincronizzazione locale-cache
-*****        {{Prestazioni}} 
-******          Standard-hdd
-******          Premium-sdd
-*******            Lrs-zrs only
-******          Netapp-altissime Prestazioni
-****      [Dischi]
-*****        {{Tipologie}}
-******            Ultra-sql
-******            Premium v2
-******            Premium 
-******            Standard-app
-******            Hdd Standard-backup
-*****        {{Crittografia}}
-******            Livello 
-*******              Disco-ADE Az disk encription
-********                CPU vm-bitlocker
-********                Key in az keyvault
-********                No Dati temp e cache
-********                Ritiro 2028 -> host encr.
-********                X legacy
-*******              server SSE
-********                default-az storage
-********                Dischi gestiti
-********                No Dati temp e cache
-*******              host
-********                Dischi gestiti
-********                * Dati temporanei e cache
-********                X Dati sensibili/regolamenti 
-***    (Sicurezza)
-****        [Baseline]
-***** {{Framework riferimento}}
-****        [SAS]
-****        [Firewall rules]
-****        [Private endpoint]
-****        ['Secure transfer required=true']
-****        [customer-managed keys]
-
+*AZ-305 - Dati <<root>>
+    * non relazionali
+        * Az Storage-account <<rose>>
+            * Servizi
+                * Blob
+                    * Tipo
+                        *_ Standard v2
+                        *_ Premium-BlockBlobStorage
+                    * Livelli accesso
+                        *_ Hot-Frequente
+                        *_ Cool-sporadico
+                            *_ Min 30gg
+                        *_ Cold-freddo
+                            *_ Min 90gg
+                        *_ Archive-archivio
+                            *_ Min 180gg
+                        *_ WORM
+                            *_ Sola lettura 
+                            *_ Blocchi
+                                *_ Temporali 
+                                *_ Giudiziari
+                    * Considerazioni
+                        *_ Posizione-Region 
+                        *_ Conformità 
+                        *_ Costi 
+                        *_ Replica
+                            *_ Separare critici 
+                                *_ Replica area secondaria 
+                                *_ Area primaria 
+                                    *_ Lrs
+                                    *_ Zrs
+                                *_ Area secondaria 
+                                    *_ Grs
+                                    *_ Gzrs
+                        *_ Carico amm.tivo
+                        *_ Riservatezza
+                        *_ Isolamento
+                * File
+                    * Metodo accesso
+                        *_ Diretto-SMB
+                        *_ Sincronizzazione locale-cache
+                    * Prestazioni
+                        *_ Standard-hdd
+                        *_ Premium-sdd
+                            *_ Lrs-zrs only
+                        *_ Netapp-altissime Prestazioni
+                * Dischi
+                    * Tipologie
+                        *_ Ultra-sql
+                        *_ Premium v2
+                        *_ Premium 
+                        *_ Standard-app
+                        *_ Hdd Standard-backup
+                    * Crittografia
+                        * Livello 
+                            * Disco-ADE Az disk encription
+                                *_ CPU vm-bitlocker
+                                *_ Key in az keyvault
+                                *_ No Dati temp e cache
+                                *_ Ritiro 2028 -> host encr.
+                                *_ X legacy
+                            * server SSE
+                                *_ default-az storage
+                                *_ Dischi gestiti
+                                *_ No Dati temp e cache
+                            * host
+                                *_ Dischi gestiti
+                                *_ Dati temporanei e cache
+                                *_ X Dati sensibili/regolamenti 
+            * (Sicurezza)
+                * [Baseline]
+                    *_ Framework riferimento
+                * [SAS]
+                * [Firewall rules]
+                * [Private endpoint]
+                * ['Secure transfer required=true']
+                * [customer-managed keys]
+        * NoSql <<blue>>
+            * cosmosDB
+            * caratteristiche
+                * Bassa Latenza
+                * Replica Globale
+                    *_ Dati + Nodi
+                    *_ Scala orizzontalmente
+    * relazionali
+        * sql <<green>>
+            * modelli prezzo 
+                * DTU Model
+                    * combinata
+                        *_ Core
+                        *_ storage
+                        *_ I/O
+                    * legacy
+                    * semplice
+                * VCore
+                    * provisioned
+                        *_ scelta vCore/RAM/Tipo storage/service tier
+                    * serverless
+                        *_ dinamico/a consumo
+                        *_ solo per Gen Purpose (service tier)
+                        *_ x carico sporadico/intermittente
+            * Servizi
+                * sqlServer VM
+                    * x Max compatibilità
+                    * IAAS Agent Extension
+                * Mng instance
+                    * single
+                        * x compatibilità
+                            *_ sql agent
+                            *_ CLR
+                            *_ trans distribuite
+                        * max 
+                            *_ 500 DB
+                            *_ 32 Tb
+                    * pool
+                        *_ x tanti piccoli db
+                * AZ Db
+                    * single
+                        * offerta gratuita fino a 10Gb
+                        * Max
+                            *_ 100 Tb
+                            *_ 100.000 sec VCore
+                        * modello prezzo
+                            *_ DTU -> service tier
+                                *_ basic -> 5 DTU
+                                *_ standard -> 100 DTU
+                                *_ premium -> 1000 DTU
+                            *_ Vcore -> service tier
+                                *_ Gen Purpose
+                                *_ Business Critical
+                                *_ Hyperscale
+                    * elastic pool
+                        *_ x molti db piccoli/indipendenti
+                            *_ paghi solo 1 (il pool)
+                            *_ scalabilità verticale
+                        *_ modelli prezzo
+                            *_ DTU model -> service tier
+                                *_ standard
+                                *_ premium
+                            *_ Vcore -> service tier
+                                *_ Gen Purpose
+            * Sicurezza
+                * rest
+                    *_ TDE Transperent Data Encryption;
+                * transit
+                    *_ TLS 1.2
+                * use
+                    *_ Dynamic Data Masking        
 left side
-**  Tipologia
-*** Non relazionali -> NoSql
-**** Semi-strutturati
-***** Json-xml
-**** Non strutturati -> Az Storage Account
-***** Video-audio
-***** Txt-pdf-pptx..
-*** Relazionali -> Sql Server
-*** Integrazione
+    * <&globe> Integrazione
+        * Az Data Lake gen2 - storage account
+            * hierarchical namespace = Sì
+            * acl posix + RBAC
+            * x big data
+                * hadoop
+                * sparks
+        * Az Data Factory (ADF)
+            * X 
+                * orchestration
+                * ingestion
+                    * no elaborazioni pesanti
+            * elements
+                * pipelines
+                * activity
+                * dataset (input)
+                * linked services (output)
+            * IR Integration Runtimes
+                * serverless 
+                    * default
+                    * x cloud to cloud
+                * self-hosted
+                    * VM
+                    * agent
+                        * solo windows
+                        * no docker
+                    * x on-prem to cloud
+                * az SSIS
+                    * cluster SSIS
+                    * x migrate SSIS
+        * Az Databricks
+            * x
+                * trasformazione
+                * arricchimento
+                * big data & ML
+            * Spark managed
+            * ambienti (personas)
+                * Sql
+                    * query su datalake
+                    * motore Spark SQL
+                * Data Science
+                    * notebook: python, scala, R
+                    * job 
+                    * ETL
+                * ML
+        * Az Synapse Analytics
+            * x
+                * analisi
+                * archiviziazione
+                * integrazione
+            * architettura
+                * massive parallel processing
+                * nodo control
+                * pool nodi compute
+                * polybase
+                    * query T-SQL 
+                    * verso:
+                        * SQL Server/ORACLE/Teradata/ecc.
+                        * No relazionali
+                        * CSV/JSON/Parquet/ecc.
+            * componenti
+                * pool sql
+                * pool Spark
+                * pipelines 
+                    * ADF integrato
+                    * no IR condiviso
+                    * no multi region
+                * link a Synapse
+                    * tipo db link verso Synapse
+                    * x alimentazione dati 
+                * Synapse Studio (IDE)
+            * scenari
+                * analisi descrittiva
+                * diagnostica
+                * predittivo
+                * prescrittivo
+      
 
-** sql <<green>>
-*** modelli prezzo 
-**** DTU Model
-***** combinata
-******_ Core
-******_ storage
-******_ I/O
-***** legacy
-***** semplice
-**** VCore
-***** provisioned
-******_ scelta vCore/RAM/Tipo storage/service tier
-***** serverless
-******_ dinamico/a consumo
-******_ solo per Gen Purpose (service tier)
-******_ x carico sporadico/intermittente
-*** Servizi
-**** sqlServer VM
-***** x Max compatibilità
-***** IAAS Agent Extension
-**** Mng instance
-***** single
-****** x compatibilità
-*******_ sql agent
-*******_ CLR
-*******_ trans distribuite
-****** max 
-*******_ 500 DB
-*******_ 32 Tb
-***** pool
-******_ x tanti piccoli db
-**** AZ Db
-***** single
-****** offerta gratuita fino a 10Gb
-****** Max
-*******_ 100 Tb
-*******_ 100.000 sec VCore
-****** modello prezzo
-******* DTU -> service tier
-******** basic -> 5 DTU
-******** standard -> 100 DTU
-******** premium -> 1000 DTU
-******* Vcore -> service tier
-******** Gen Purpose
-******** Business Critical
-******** Hyperscale
-***** elastic pool
-****** x molti db piccoli/indipendenti
-******* paghi solo 1 (il pool)
-******* scalabilità verticale
-****** modelli prezzo
-******* DTU model -> service tier
-******** standard
-******** premium
-******* Vcore -> service tier
-******** Gen Purpose
-*** Sicurezza
-**** rest
-*****:TDE
- Transperent
- Data
- Encryption;
-**** transit
-***** TLS 1.2
-**** use
-***** Dynamic Data Masking
-
-** NoSql <<blue>>
-*** cosmosDB
-*** caratteristiche
-**** Bassa Latenza
-**** Replica Globale
-***** Dati + Nodi
-***** Scala orizzontalmente
-
-** Az Data factory ADF
 @endmindmap
