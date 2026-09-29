@@ -245,6 +245,38 @@ left side
                 * diagnostica
                 * predittivo
                 * prescrittivo
-      
+        * percorsi accesso
+            * Warm (moderato)
+                * stream processing IoT
+                * Az Stream Analytics
+            * Cold (saltuario)
+                * long-term view
+                * machine learning
+                * Az storage account
+                * Az Data Factory
+            * Hot (frequente)
+                * real time
+        * Az Stream Analytics
+            * stream processing
+                * (ingest) data streaming 
+                    * event hubs
+                    * Iot Hub
+                    * az blob storage
+                * analize
+                    * sql query
+                * output
+                    * DB 
+                    * Power big
+                    * DWH - Az Synapse - Az Fabric
+                    * custom downstream
+            * Considerazioni
+                * PaaS
+                * low Cost
+                    * streaming unit
+                * for ultra-low latency
+                    * IoT Edge 
+                        * server locale poi su cloud
+                    * Azure Stack
+                        * on premise
 
 @endmindmap
