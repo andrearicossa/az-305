@@ -1,0 +1,31 @@
+@startmindmap
+<style>
+mindmapDiagram {
+    .root {
+        BackgroundColor #333333
+        FontColor #FFFFFF
+        RoundCorner 2000
+        FontSize 28
+        Padding 20
+        LineThickness 5
+    }
+    .green * {
+        BackgroundColor lightgreen
+    }
+    .rose * {
+        BackgroundColor #FFBBCC
+    }
+    .blue * {
+        BackgroundColor lightblue
+    }    
+}
+</style>
+* compute <<root>>
+    * VM
+    * batch
+    * app service
+    * Container
+    * Kubernetes
+    * function app
+    * logic app
+@endmindmap
