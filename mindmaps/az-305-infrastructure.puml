@@ -20,12 +20,17 @@ mindmapDiagram {
     }    
 }
 </style>
-* compute <<root>>
-    * VM
-    * batch
-    * app service
-    * Container
-    * Kubernetes
-    * function app
-    * logic app
+* Infrastructure <<root>>
+    * Compute [[https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/images/compute-choices.svg flowchart to select]]
+        * VM
+        * Batch
+        * App service
+        * Container
+        * Kubernetes
+        * Function app
+        * Logic app
+    * App
+left side
+    * Network
+    * Migration
 @endmindmap

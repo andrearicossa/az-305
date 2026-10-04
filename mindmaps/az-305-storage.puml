@@ -20,7 +20,7 @@ mindmapDiagram {
     }    
 }
 </style>
-*AZ-305 - Dati <<root>>
+*AZ-305 - Storage <<root>>
     * non relazionali
         * Az Storage-account <<rose>>
             * Servizi

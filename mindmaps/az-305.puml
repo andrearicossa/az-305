@@ -1,0 +1,46 @@
+@startmindmap
+<style>
+mindmapDiagram {
+    .root {
+        BackgroundColor #333333
+        FontColor #FFFFFF
+        RoundCorner 2000
+        FontSize 28
+        Padding 20
+        LineThickness 5
+    }
+    .green * {
+        BackgroundColor lightgreen
+    }
+    .rose * {
+        BackgroundColor #FFBBCC
+    }
+    .blue * {
+        BackgroundColor lightblue
+    }    
+}
+</style>
+*AZ-305<<root>>
+    * Prerequisiti
+        * Core
+        * Compute
+        * Storage
+        * Auth/Authz
+    * Identity/Governance/Monitor
+        * Governance
+        * Auth/authz
+        * Monitor
+    * Business Continuity
+        * HA-DR strategy
+        * Backup-DR solution 
+left side
+    * Storage
+        * Relational
+        * Non-Relational
+        * Integration
+    * Infrastructure
+        * Compute
+        * App
+        * Network
+        * Migration
+@endmindmap
