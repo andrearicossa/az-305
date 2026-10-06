@@ -22,7 +22,42 @@ mindmapDiagram {
 </style>
 * Infrastructure <<root>>
     * Compute [[https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/images/compute-choices.svg flowchart to select]]
+        * scelta (fattori)
+            * Tipo Workload
+                * HPC
+                * event driven
+            * Controllo
+                * full control?
+            * Architettura
+                * Microservices
+                * orchestration
+                * serverless
+            * Migrazione
+                * Cloud-optimized
+                * lift & shift
+                * Container
+            * Hosting
+                * Saas
+                * Paas
+                * Iaas
         * VM
+            * scenari
+                * lift & shift
+                * Iaas
+            * punti attenzione
+                * Network
+                    * difficile cambio
+                * nome
+                    * difficile cambio
+                * location
+                    * stessa per CPU + Disk
+                    * tipologia hardware (disponibilità)
+                    * prezzo (diverso per region)
+                * Size
+                * Pricing
+                    * x compute
+                    * x storage
+                * OS
         * Batch
         * App service
         * Container
