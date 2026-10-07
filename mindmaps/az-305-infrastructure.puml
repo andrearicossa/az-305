@@ -58,8 +58,23 @@ mindmapDiagram {
                     * x compute
                     * x storage
                 * OS
-        * Batch
+        * Batch [[https://learn.microsoft.com/en-us/training/wwl-azure/design-compute-solution/media/azure-batch.png process]]
+            * punti attenzione
+                * pools
+                    * contain nodes
+                    * overhead creating pool
+                * nodes
+                    * no garanteed
+                * jobs
+                    * contain tasks
+                    * meglio 1 job -> tanti task
         * App service
+            * punti attenzione
+                * webapp + api 
+                * webjob
+                * CD - slots
+                * auth/authz - easy auth
+                * plans - free to premium
         * Container
         * Kubernetes
         * Function app
