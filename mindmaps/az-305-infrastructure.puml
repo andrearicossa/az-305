@@ -76,10 +76,68 @@ mindmapDiagram {
                 * auth/authz - easy auth
                 * plans - free to premium
         * Container
-        * Kubernetes
+            * groups
+                * same lifecycle
+                * Network
+                * storage
+            * punti attenzione
+                * private registry
+                    * Az container registry
+                    * Docker truster registry
+                * image integrity 
+                    * security issue
+                    * durante lifecycle
+                * Monitor resource
+                * no archestrazione
+        * Kubernetes (AKS)
+            * archestrazione container
+                * deploy instance
+                * manage instance
+            * pricing tiers:
+                * free
+                * standard
+                * premium
+            * punti attenzione
+                * integration
+                    * entraId
+                    * az Monitor
+                * scaling
+                    * pod autoscaler
+                    * cluster autoscaler
+                * node upgrade
+                * storage
+                * Network
         * Function app
+            * serverless
+                * event driven
+                * short-lived
+            * pro
+                * scalabilità 
+                * no Infrastructure
+                * pay per use
+            * punti attenzione
+                * durable Function
+                    * stateful
+                * only short running
+                * difesa da failure (continue if fail, Network outages, ecc.)
+                * storage per func
         * Logic app
+            * serverless
+            * workflows/integration
+            * no realtime
+            * plans
+                * consumption
+                    * multitenant
+                    * pay per execution
+                    * WF per resource
+                * standard
+                    * single tenant
+                    * WF per app
+                    * VNet integration
+                    * risorse dedicate
     * App
+        * event/message
+            *
 left side
     * Network
     * Migration
