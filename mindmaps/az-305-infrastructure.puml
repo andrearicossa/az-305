@@ -136,8 +136,57 @@ mindmapDiagram {
                     * VNet integration
                     * risorse dedicate
     * App
-        * event/message
-            *
+        * message
+            * caratteristiche
+                * contiene dati
+                * destinatorio obbligatorio
+                * mittente conosce destinatari
+                * garanzia
+            * servizi
+                * Az queue
+                    * large numbers
+                    * anywhere
+                    * no garanzia FIFO
+                    * consumer idempotente
+                    * PeekLock
+                        * get -> hidden -> process -> delete
+                        * visibility timeout
+                        * At-least-once
+                    * > 80gb
+                * Az service bus
+                    * message broker
+                    * publish subscribe
+                        * più consumer
+                    * receiver/processor + AMQP
+                    * ReceiveAndDelete
+                        * at-most-once
+                    * PeekLock
+                        * At-least-once
+                    * max 80gb
+        * event
+            * caratteristiche
+                * leggero
+                * molti destinatari
+                * anche come catena
+            * servizi
+                * az event hub
+                    * big data event stream
+                        * pull model 
+                        * con partition
+                    * pricing tier
+                        * standard
+                        * premium
+                            * geo replica
+                            * 90gg retention
+                            * partition scale
+                * Az Event Grid
+                    * reactive programming
+                        * push model
+                        * pull model
+                            * Receive/ACK/Release/Reject
+
+
+            
 left side
     * Network
     * Migration
