@@ -20,6 +20,7 @@ mindmapDiagram {
     }    
 }
 </style>
+
 * Infrastructure <<root>>
     * Compute [[https://learn.microsoft.com/en-us/azure/architecture/guide/technology-choices/images/compute-choices.svg flowchart to select]]
         * scelta (fattori)
@@ -184,9 +185,59 @@ mindmapDiagram {
                         * push model
                         * pull model
                             * Receive/ACK/Release/Reject
+        * caching
+            * Az Managed Redis
+                * service tiers
+                    * balanced (general)
+                    * Memory opt
+                    * compute opt
+                    * Flash opt (large dataset)
+                * pattern
+                    * data cache -> cache-aside
+                    * content
+                    * session
+                    * task queuing 
+                    * transazioni distribuite
+        * api management
+            * front door
+            * service tiers
+                * Classic
+                    * Dev / Basic / Standard / Premium
+                * A consumo
+                * V2
+                    * Basic / Standard / Premium
+                * Premium V2 
+            * punti attenzione
+                * number of APIs
+                * rate of change
+                * policies
+                    * quotas
+                    * rate limits
+                    * validation
+                    * ecc..
+                * standardizzare API specs
+                * centralizzare management
+                * Security
+        * Deployment Infrastructure
+            * ARM (Az Resource management) templates
+                * idempotente
+                * in CI/CD
+                * formati
+                    * JSON
+                    * BICEP
+            * Az Automation
+                * x Processi
+                * x Configurazioni
+                    * Az Machine configuration
+                    * Change tracking & Inventory
+                * x Update
+                    * patch orchestration
+                    * OS maintenance
+        * App configuration
+            * settings
+            * feature flags
 
-
-            
+''''''''''''''
 left side
     * Network
     * Migration
