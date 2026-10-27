@@ -240,5 +240,33 @@ mindmapDiagram {
 ''''''''''''''
 left side
     * Network
+        * defence in depth
+        * requisiti
+            * Naming convention
+            * Regions
+                * VNET scope single region
+                * VNET peering
+            * Subscriptions
+                * ?
+            * IP Addresses ->
+            * Segmentation
+                * VNET 
+                * subnet no sovrapposizione
+                * CIDR formato
+                    * /20 
+                    * -> suddividere per 8, 8+8+4
+                    * 4 corrisponde a 240 (128, 192, 224, 240, 248, 252, 254, 255)
+
+            * filtering
+            * NSG
+            * routing
+        * best practice
+            * ip address space
+                * VNET -> determinare numero di IP necessari TOTALI
+                    * /16 32-16=16 2*16=65536
+                * on premise ranges -> no overlap
+            * hub-spoke
+                * central point -> hub vnet
+                * workload -> spoke vnet
     * Migration
 @endmindmap
