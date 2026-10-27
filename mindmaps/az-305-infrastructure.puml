@@ -1,13 +1,19 @@
 @startmindmap
+' A4 landscape: rapporto 297/210 = 1.414
+scale max 1120*790
 <style>
 mindmapDiagram {
     .root {
         BackgroundColor #333333
         FontColor #FFFFFF
         RoundCorner 2000
-        FontSize 28
+        FontSize 14
         Padding 20
         LineThickness 5
+    }
+    node {
+        FontSize 11
+        Padding 3
     }
     .green * {
         BackgroundColor lightgreen
